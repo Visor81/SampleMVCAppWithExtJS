@@ -19,8 +19,6 @@
 			{ header: 'Amount', dataIndex: 'amount', width: 100 },
 			{ header: 'Description', dataIndex: 'description', flex: 1 }
 		];
-		//deprecated
-		//this.addEvents('removeitem');
 
 		this.actions = {
 			removeitem: Ext.create('Ext.Action', {
@@ -33,9 +31,7 @@
 		};
 
 		var contextMenu = Ext.create('Ext.menu.Menu', {
-			items: [
-				this.actions.removeitem
-			]
+			items: [this.actions.removeitem]
 		});
 
 		this.on({
@@ -45,8 +41,12 @@
 				return false;
 			}
 		});
-		this.updateContent();
+		//this.updateContent();
 		this.callParent(arguments);
+	},
+
+	listeners: {
+		afterRender: function () { this.fireEvent('refresh', this.contact_id); },
 	},
 
 
@@ -58,10 +58,10 @@
 			return rs[0];
 		}
 		return null;
-	},
-
-	updateContent: function () {
-		var myStore = Ext.create('ContactsApp.store.ContributionsStore');
-		this.store = myStore.load({ params: { contact_id: this.contact_id } });
 	}
+
+	//updateContent: function () {
+	//	var myStore = Ext.create('ContactsApp.store.ContributionsStore');
+	//	this.store = myStore.load({ params: { contact_id: this.contact_id } });
+	//}
 });

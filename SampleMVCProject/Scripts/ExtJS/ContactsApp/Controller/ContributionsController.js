@@ -19,7 +19,8 @@
 		this.control({
 			'contributionList': {
 				itemdblclick: this.editContribution,
-				removeitem: this.removeContribution
+				removeitem: this.removeContribution,
+				refresh: this.refresh
 			},
 
 			'contributionAdd button[action=save]': {
@@ -31,6 +32,10 @@
 		});
 	},
 
+	refresh: function (contactId) {
+		this.getContributionsStoreStore().load({ params: { contact_id: contactId } });
+	},
+
 	editContribution: function (grid, record) {
 		var view = Ext.widget('contributionEdit');
 		view.down('form').loadRecord(record);
@@ -40,7 +45,7 @@
 		Ext.Msg.confirm('Delete Contribution', 'Are you sure?', function (button) {
 			if (button == 'yes') {
 				this.getContributionsStoreStore().remove(contribution);
-				this.updateWnd(contribution.data.contact_id);
+				//this.updateWnd(contribution.data.contact_id);
 			}
 		}, this);
 	},
@@ -55,11 +60,8 @@
 			win.close();
 		}
 
-		this.updateWnd(values.contact_id);
+		//this.updateWnd(values.contact_id);
 
-		//this.getContributionsStoreStore().load({ params: { contact_id: values.contact_id } });
-		//this.getContributionsStoreStore().add(values);
-		//Ext.ComponentQuery.query('contributionList')[0].getView().refresh();
 	},
 
 	updateContribution: function (button) {
@@ -71,14 +73,14 @@
 
 		record.set(values);
 		win.close();
-	},
-
-	updateWnd: function(contactId) {
-		setTimeout(function () {
-			var wnd = Ext.WindowMgr.getActive();
-			wnd.removeAll();
-			var updList = Ext.widget('contributionList', { contact_id: contactId });//, manualUpdate:true
-			wnd.add(updList);
-		}, 300);
 	}
+
+	//updateWnd: function(contactId) {
+	//	setTimeout(function () {
+	//		var wnd = Ext.WindowMgr.getActive();
+	//		wnd.removeAll();
+	//		var updList = Ext.widget('contributionList', { contact_id: contactId });//, manualUpdate:true
+	//		wnd.add(updList);
+	//	}, 300);
+	//}
 });

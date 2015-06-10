@@ -32,9 +32,7 @@
 		};
 
 		var contextMenu = Ext.create('Ext.menu.Menu', {
-			items: [
-				this.actions.removeitem
-			]
+			items: [this.actions.removeitem]
 		});
 
 		this.on({
@@ -44,8 +42,12 @@
 				return false;
 			}
 		});
-		this.updateContent();
+		//this.updateContent();
 		this.callParent(arguments);
+	},
+
+	listeners: {
+		afterRender: function () { this.fireEvent('refresh', this.contact_id); },
 	},
 
 
@@ -57,10 +59,10 @@
 			return rs[0];
 		}
 		return null;
-	},
-
-	updateContent: function () {
-		var myStore = Ext.create('ContactsApp.store.GoodsStore');
-		this.store = myStore.load({ params: { contact_id: this.contact_id } });
 	}
+
+	//updateContent: function () {
+	//	var myStore = Ext.create('ContactsApp.store.GoodsStore');
+	//	this.store = myStore.load({ params: { contact_id: this.contact_id } });
+	//}
 });
