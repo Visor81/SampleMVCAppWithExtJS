@@ -1,0 +1,31 @@
+﻿.Details {
+	padding-bottom: 10px;
+}
+.Details div {
+	width: 200px;
+	padding: 5px 5px 5px 5px;
+}
+
+.Details div.display-label {
+	font-weight: bold;
+	background-color: lightgrey;
+}
+
+.Details div.display-field {
+	background-color: lightskyblue;
+}
+
+.Data {
+	width: 200px;
+}
+
+.BackToList {
+	position: relative; 
+	top: -54px; 
+	left: 80px;
+}
+
+/*.table.table-striped {
+	width: 600px;
+}*/
+

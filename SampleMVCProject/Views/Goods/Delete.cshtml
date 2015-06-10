@@ -1,0 +1,47 @@
+﻿@model BusinessLayer.DataModel.Goods
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2 class="panel panel-default">Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset class="Details">
+	<legend>Goods</legend>
+
+	<div class="display-label">
+		@Html.DisplayNameFor(model => model.Contacts.name)
+	</div>
+	<div class="display-field">
+		@Html.DisplayFor(model => model.Contacts.name)
+	</div>
+
+	<div class="display-label">
+		@Html.DisplayNameFor(model => model.title)
+	</div>
+	<div class="display-field">
+		@Html.DisplayFor(model => model.title)
+	</div>
+
+	<div class="display-label">
+		@Html.DisplayNameFor(model => model.price)
+	</div>
+	<div class="display-field">
+		@Html.DisplayFor(model => model.price)
+	</div>
+
+	<div class="display-label">
+		@Html.DisplayNameFor(model => model.description)
+	</div>
+	<div class="display-field">
+		@Html.DisplayFor(model => model.description)
+	</div>
+</fieldset>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+		<input type="submit" value="Delete" class="btn btn-primary" /> |
+        @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-danger" })
+    </p>
+}

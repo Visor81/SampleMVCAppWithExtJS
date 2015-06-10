@@ -1,0 +1,54 @@
+﻿@model IEnumerable<BusinessLayer.DataModel.Goods>
+
+@{
+    ViewBag.Title = "Goods";
+}
+
+<h2>Goods</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-success" })
+</p>
+<table class="table table-striped table-condensed table-bordered">
+	<tr>
+		<th>
+			@Html.DisplayNameFor(model => model.Contacts.name)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.title)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.price)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.description)
+		</th>
+		<th></th>
+	</tr>
+
+	@foreach (var item in Model)
+	{
+		<tr>
+			<td>
+				@Html.DisplayFor(modelItem => item.Contacts.name)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.title)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.price)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.description)
+			</td>
+			<td>
+				@Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+				@Html.ActionLink("Details", "Details", new { id = item.id }) |
+				@Html.ActionLink("Delete", "Delete", new { id = item.id })
+			</td>
+		</tr>
+	}
+
+</table>
+
+<a href="/" class="btn btn-info">Back to Grid Control</a>

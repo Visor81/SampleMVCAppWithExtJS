@@ -1,0 +1,63 @@
+﻿@model BusinessLayer.DataModel.Goods
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset class="Details">
+        <legend>Goods</legend>
+
+        @Html.HiddenFor(model => model.id)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.contact_id, "Contacts")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.contact_id, null, new { id = "contact_id", @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.contact_id)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.title)
+        </div>
+        <div class="editor-field">
+	        @Html.TextBoxFor(model => model.title, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.title)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.price)
+        </div>
+        <div class="editor-field">
+			@Html.TextBoxFor(model => model.price, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.price)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.description)
+        </div>
+        <div class="editor-field">
+            @Html.TextAreaFor(model => model.description, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.description)
+        </div>
+
+	    <p>
+		    <br />
+		    <input type="submit" value="Save" class="btn btn-primary" />
+	    </p>
+    </fieldset>
+}
+
+<div class="BackToList">
+    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-danger" })
+</div>
+
+@*@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}*@

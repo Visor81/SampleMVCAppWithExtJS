@@ -1,0 +1,43 @@
+﻿@model BusinessLayer.DataModel.Goods
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset class="Details">
+	<legend>Goods</legend>
+
+	<div class="display-label">
+		@Html.DisplayNameFor(model => model.Contacts.name)
+	</div>
+	<div class="display-field">
+		@Html.DisplayFor(model => model.Contacts.name)
+	</div>
+
+	<div class="display-label">
+		@Html.DisplayNameFor(model => model.title)
+	</div>
+	<div class="display-field">
+		@Html.DisplayFor(model => model.title)
+	</div>
+
+	<div class="display-label">
+		@Html.DisplayNameFor(model => model.price)
+	</div>
+	<div class="display-field">
+		@Html.DisplayFor(model => model.price)
+	</div>
+
+	<div class="display-label">
+		@Html.DisplayNameFor(model => model.description)
+	</div>
+	<div class="display-field">
+		@Html.DisplayFor(model => model.description)
+	</div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }, new { @class = "btn btn-primary" }) |
+    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-danger" })
+</p>
